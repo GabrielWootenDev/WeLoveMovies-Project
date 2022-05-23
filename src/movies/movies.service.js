@@ -1,12 +1,23 @@
 const knex = require("../db/connection");
+const reduceProperties = require("../utils/reduce-properties");
 
 
-// need to reduce critics in showReviews
+const reduceCritic = reduceProperties("critic_id", {
+  critic_id: ["critic", null, "critic_id"],
+  preferred_name: ["critic", null, "preferred_name"],
+  surname: ["critic", null, "surname"],
+  organization_name: ["critic", null, "organization_name"],
+  created_at: ["critic", null, "created_at"],
+  updated_at: ["critic", null, "updated_at"],
+});
+
+
 function showReviews(movieId) {
   return knex("reviews as r")
   .select("*")
   .join("critics as c", "c.critic_id", "r.critic_id")
   .where({movie_id: movieId})
+  .then(reduceCritic);
 }
 
 
