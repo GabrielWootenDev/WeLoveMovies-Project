@@ -36,7 +36,7 @@ async function movieExists(req, res, next) {
     return next();
   }
 
-  return next({ status: 404, message: "Movie not found" });
+  next({ status: 404, message: "Movie not found" });
 }
 
 async function read(req, res) {
