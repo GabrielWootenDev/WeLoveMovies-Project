@@ -44,14 +44,7 @@ async function read(movieId) {
 }
 
 async function list() {
-  return await knex("movies as m").select(
-    "movie_id",
-    "title",
-    "runtime_in_minutes",
-    "rating",
-    "description",
-    "image_url"
-  );
+  return await knex("movies").select("*");
 }
 
 module.exports = {
