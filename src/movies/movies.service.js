@@ -1,7 +1,7 @@
 const knex = require("../db/connection");
 const reduceProperties = require("../utils/reduce-properties");
 
-//reduce critic will alter all the properties for a critic_id in a response and add them into their own object with the key of critic
+//reduceCritic will alter all the properties for a critic_id in a response and add them into their own object with the key of critic
 const reduceCritic = reduceProperties("critic_id", {
   critic_id: ["critic", null, "critic_id"],
   preferred_name: ["critic", null, "preferred_name"],
